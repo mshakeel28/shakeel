@@ -1,0 +1,149 @@
+/* ============================================================
+   Shared stylesheet. Every page links to this one file, so any
+   change here applies across the whole site.
+   ============================================================ */
+
+/* ---------- tokens: change these to restyle everything ---------- */
+:root{
+  --paper:#F4F5F2;
+  --panel:#EAECE7;
+  --ink:#15201E;
+  --ink-soft:#4C5854;
+  --rule:#C8CEC6;
+  --pos:#B23A2E;   /* positive lobe, 2D IR convention */
+  --neg:#1E4E7C;   /* negative lobe */
+  --measure:66ch;
+  --pad:clamp(1.25rem, 5vw, 4rem);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Spectral",Georgia,serif; font-weight:300;
+  font-size:clamp(1rem,0.95rem + 0.2vw,1.09rem); line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+h1,h2,h3{font-weight:600; line-height:1.12; margin:0}
+p{margin:0 0 1rem; max-width:var(--measure)}
+.wrap{max-width:64rem; margin:0 auto; padding-inline:var(--pad)}
+
+/* ---------- header ---------- */
+header{
+  position:sticky; top:0; z-index:10; background:rgba(244,245,242,.92);
+  backdrop-filter:blur(6px); border-bottom:1px solid var(--rule);
+}
+.bar{display:flex; gap:1.5rem; align-items:baseline; justify-content:space-between;
+     padding-block:.7rem; flex-wrap:wrap}
+.mark{font-size:1rem; letter-spacing:.01em; text-decoration:none}
+nav{font-family:"IBM Plex Sans",system-ui,sans-serif; font-size:.85rem; display:flex; gap:1.25rem}
+nav a{color:var(--ink-soft); text-decoration:none; padding-block:.2rem}
+nav a:hover, nav a:focus-visible{color:var(--pos)}
+:focus-visible{outline:2px solid var(--neg); outline-offset:3px}
+
+/* ---------- hero (home page) ---------- */
+.hero{padding-block:clamp(2.5rem,7vw,5rem) 1rem}
+.hero h1{font-size:clamp(2.1rem,1.2rem + 3.6vw,3.9rem); letter-spacing:-.015em; margin-bottom:.6rem}
+.standfirst{font-size:1.15em; color:var(--ink-soft)}
+.hero-grid{display:grid; gap:clamp(1.5rem,4vw,3rem); grid-template-columns:1fr}
+@media(min-width:56rem){ .hero-grid{grid-template-columns:1.35fr .65fr; align-items:end} }
+.portrait{width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--rule); filter:grayscale(.15)}
+
+/* ---------- the drawn trace ---------- */
+figure.trace{margin:2.5rem 0 0; padding:0}
+.trace svg{display:block; width:100%; height:auto; overflow:visible}
+.trace .axis{stroke:var(--rule); stroke-width:1}
+.trace .curve{fill:none; stroke-width:2; stroke-linecap:round;
+              stroke-dasharray:2400; stroke-dashoffset:2400; animation:draw 2.6s ease-out forwards}
+.trace .curve.b{animation-delay:.35s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){ .trace .curve{animation:none; stroke-dashoffset:0} }
+.trace figcaption{font-family:"IBM Plex Sans",sans-serif; font-size:.78rem; color:var(--ink-soft); margin-top:.5rem}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(2.5rem,6vw,4.5rem); border-top:1px solid var(--rule)}
+section > .wrap > h2{font-size:1.5rem; margin-bottom:1.75rem}
+
+/* research list: metadata rail + description */
+.entry{display:grid; gap:.35rem 2rem; grid-template-columns:1fr; padding-block:1.6rem;
+       border-top:1px solid var(--rule)}
+.entry:first-of-type{border-top:0; padding-top:.25rem}
+@media(min-width:44rem){ .entry{grid-template-columns:9rem 1fr} }
+.meta{font-family:"IBM Plex Sans",sans-serif; font-size:.78rem; color:var(--ink-soft); line-height:1.5}
+.entry h3{font-size:1.2rem; margin-bottom:.4rem}
+.entry h3 a{text-decoration:none; background-image:linear-gradient(var(--rule),var(--rule));
+            background-size:100% 1px; background-repeat:no-repeat; background-position:0 100%;
+            padding-bottom:2px}
+.entry h3 a:hover, .entry h3 a:focus-visible{background-image:linear-gradient(var(--pos),var(--pos))}
+.entry p{margin-bottom:0}
+
+/* publications */
+ol.pubs{counter-reset:p; list-style:none; margin:0; padding:0}
+ol.pubs li{counter-increment:p; position:relative; padding:0 0 1.1rem 2.4rem; max-width:var(--measure)}
+ol.pubs li::before{content:counter(p); position:absolute; left:0; top:.15rem;
+  font-family:"IBM Plex Sans",sans-serif; font-size:.78rem; color:var(--neg)}
+ol.pubs em{font-style:italic}
+
+/* skills */
+.skills{display:grid; gap:1.5rem 2.5rem; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))}
+.skills h3{font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; font-weight:600;
+           color:var(--ink-soft); margin-bottom:.4rem}
+.skills p{margin:0}
+
+.contact a{color:var(--neg)}
+footer{border-top:1px solid var(--rule); padding-block:1.5rem;
+       font-family:"IBM Plex Sans",sans-serif; font-size:.78rem; color:var(--ink-soft)}
+
+/* ============================================================
+   PROJECT PAGES
+   ============================================================ */
+.project{padding-block:clamp(2rem,6vw,4rem)}
+.back{font-family:"IBM Plex Sans",sans-serif; font-size:.8rem; color:var(--ink-soft);
+      text-decoration:none; display:inline-block; margin-bottom:2rem}
+.back:hover, .back:focus-visible{color:var(--pos)}
+.project h1{font-size:clamp(1.9rem,1.2rem + 2.4vw,3rem); letter-spacing:-.01em; margin-bottom:.75rem;
+            max-width:22ch}
+.lede{font-size:1.15em; color:var(--ink-soft); max-width:var(--measure)}
+
+/* fact rail: role, dates, techniques, collaborators */
+.facts{display:grid; gap:1rem 2rem; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));
+       border-block:1px solid var(--rule); padding-block:1.25rem; margin:2rem 0 2.5rem}
+.facts dt{font-family:"IBM Plex Sans",sans-serif; font-size:.75rem; color:var(--ink-soft);
+          margin-bottom:.2rem}
+.facts dd{margin:0; font-size:.95rem}
+
+.project h2{font-size:1.25rem; margin:2.5rem 0 .9rem}
+.project h2:first-of-type{margin-top:0}
+
+/* figures */
+.project figure{margin:2rem 0; padding:0}
+.project figure img{width:100%; height:auto; display:block; border:1px solid var(--rule)}
+.project figcaption{font-family:"IBM Plex Sans",sans-serif; font-size:.78rem;
+                    color:var(--ink-soft); margin-top:.5rem; max-width:var(--measure)}
+.figrow{display:grid; gap:1.25rem; grid-template-columns:1fr}
+@media(min-width:44rem){ .figrow{grid-template-columns:1fr 1fr} }
+.figrow figure{margin:0}
+
+/* takeaway callout, one per page at most */
+.takeaway{border-left:3px solid var(--neg); padding:.25rem 0 .25rem 1.25rem;
+          margin:2.5rem 0; max-width:var(--measure)}
+.takeaway p:last-child{margin-bottom:0}
+
+/* ============================================================
+   ADDED: experience bullets, compact lists (talks, awards)
+   ============================================================ */
+.entry ul{margin:.5rem 0 0; padding-left:1.1rem; max-width:var(--measure)}
+.entry ul li{margin-bottom:.35rem}
+.entry ul li::marker{color:var(--rule)}
+
+ul.list{margin:0; padding:0; list-style:none}
+ul.list li{display:grid; gap:.1rem 2rem; grid-template-columns:1fr;
+           padding-block:.65rem; border-top:1px solid var(--rule); max-width:none}
+ul.list li:first-child{border-top:0}
+@media(min-width:44rem){ ul.list li{grid-template-columns:9rem 1fr} }
+ul.list .where{color:var(--ink-soft); font-size:.95em}
+
+ol.pubs strong{font-weight:600; color:var(--ink)}
+ol.pubs a{color:var(--neg)}

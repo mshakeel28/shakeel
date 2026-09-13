@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SERS for biofilm detection — Muhammad Shakeel</title>
+<meta name="description" content="Silver-nanoparticle SERS with PCA and PLS-DA to distinguish biofilm-forming bacterial strains.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<!-- ../ because this file lives one folder down, inside projects/ -->
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="../index.html">Muhammad Shakeel</a>
+    <nav>
+      <a href="../index.html#research">Research</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap project">
+  <a class="back" href="../index.html#research">Back to research</a>
+
+  <h1>SERS for biofilm detection</h1>
+  <p class="lede">Biofilm-forming strains of Staphylococcus epidermidis are clinically important and hard to tell apart quickly. Surface-enhanced Raman spectra, fed through chemometric classification, separate them from non-forming strains.</p>
+
+  <dl class="facts">
+    <div><dt>Role</dt><dd>First author — measurement, analysis</dd></div>
+    <div><dt>Period</dt><dd>2020 – 2022</dd></div>
+    <div><dt>Techniques</dt><dd>SERS, silver nanoparticles, PCA, PLS-DA</dd></div>
+    <div><dt>Institution</dt><dd>University of Agriculture Faisalabad</dd></div>
+  </dl>
+
+  <h2>The problem</h2>
+  <p>Biofilm formation changes how bacteria respond to treatment, so distinguishing forming from
+  non-forming strains matters clinically. Conventional assays are slow. Raman scattering reports on
+  molecular composition directly, but the signal from bacterial pellets is weak.</p>
+
+  <h2>Approach</h2>
+  <p>Silver nanoparticles provide the surface enhancement that makes the measurement practical on
+  bacterial pellets. The resulting spectra differ in ways too subtle to read by eye, so principal
+  component analysis reduced them and PLS-DA built the classifier.</p>
+  <p>[Add: how many strains and replicates, and how you validated the model — cross-validation scheme,
+  and the sensitivity and specificity you reached. Reviewers of this kind of work care most about
+  whether the validation was honest.]</p>
+
+  <figure>
+    <img src="images/sers-spectra.png" alt="Mean SERS spectra of biofilm-forming and non-forming strains">
+    <figcaption>[Add caption: which bands drive the separation and what they are assigned to.]</figcaption>
+  </figure>
+
+  <h2>Outcome</h2>
+  <p>Published as Shakeel et al., <em>Surface-enhanced Raman spectroscopy for the characterisation of
+  pellets of biofilm-forming bacterial strains of Staphylococcus epidermidis</em>, in
+  <em>Photodiagnosis and Photodynamic Therapy</em>, 2022. [Add the DOI link.]</p>
+
+  <div class="takeaway">
+    <p>This project is where the analytical half of my training comes from: building a measurement
+    that has to work on messy, real samples, and a model that has to be defensible.</p>
+  </div>
+
+  <p style="margin-top:2.5rem"><a class="back" href="../index.html#research">Back to research</a></p>
+</main>
+
+<footer><div class="wrap">Muhammad Shakeel · New Orleans, LA · Last updated September 2026.</div></footer>
+</body>
+</html>
